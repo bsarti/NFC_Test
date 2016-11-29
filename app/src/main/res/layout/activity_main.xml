@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.agorn.nfc_test.MainActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Message to send"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="19dp"
+        android:id="@+id/messagesend" />
+
+    <Button
+        android:text="read message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/messagesend"
+        android:layout_alignLeft="@+id/messagesend"
+        android:layout_alignStart="@+id/messagesend"
+        android:layout_marginTop="20dp"
+        android:id="@+id/buttonreadmessagesend"
+        android:onClick="onClickReadMessageSend" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messagesendview"
+        android:layout_alignBaseline="@+id/buttonreadmessagesend"
+        android:layout_alignBottom="@+id/buttonreadmessagesend"
+        android:layout_toRightOf="@+id/messagesend"
+        android:layout_toEndOf="@+id/messagesend" />
+
+    <Button
+        android:text="format TAG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonreadmessagesend"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:id="@+id/buttonformat" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonformat"
+        android:layout_toRightOf="@+id/buttonreadmessagesend"
+        android:layout_toEndOf="@+id/buttonreadmessagesend"
+        android:layout_marginTop="57dp"
+        android:id="@+id/textstatus" />
+</RelativeLayout>

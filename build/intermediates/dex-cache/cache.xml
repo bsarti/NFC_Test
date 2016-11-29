@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.4.0_b8c010875d86400073a6193746046a3e49be24b3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.4.0_683e9ad4b958021f59ffc21b78143b05c66fc785.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="2a92bec2e540c539258e851809121612b88a4d32">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_72a91f69c209a93615a1eec584f14b570995a790.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_fe1015c19af8f089efa237ace5d321c4d3d7ce1d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="6630e2a86d7bb8cfef460063a54f0a4b7d0eee9f">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/instant-run_e5364827d4660bc2fcb66fb88245688c3ffbc83c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_777abef98fbe9ac14d58dac01ed04b164d82bff2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.4.0_06df75e09fb29b6c3c83307f8253fe3bb6fdf46a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/agorn/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_464f363e825d10293ac9dcac8e3eb8692aac5819.jar" />
+    </item>
+
+</items>
