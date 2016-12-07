@@ -55,12 +55,24 @@
         android:id="@+id/buttonformat" />
 
     <TextView
-        android:text="TextView"
+        android:text="Tag message read"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonformat"
-        android:layout_toRightOf="@+id/buttonreadmessagesend"
-        android:layout_toEndOf="@+id/buttonreadmessagesend"
-        android:layout_marginTop="57dp"
-        android:id="@+id/textstatus" />
+        android:id="@+id/tagmessageread"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/buttonreadmessagesend"
+        android:layout_alignStart="@+id/buttonreadmessagesend"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="71dp" />
+
+    <Button
+        android:text="Read Tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tagmessageread"
+        android:layout_toLeftOf="@+id/buttonformat"
+        android:layout_toStartOf="@+id/buttonformat"
+        android:layout_marginBottom="45dp"
+        android:id="@+id/buttonreadtag" />
 </RelativeLayout>

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -41,27 +42,30 @@ public class MainActivity extends AppCompatActivity {
     private Tag tag;
 
     private EditText inputText;
-    private TextView textStatus;
+    private TextView tag_message_read;
     private final String TAG = "mytag";
+    private Button button_read_tag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button_read_send_message = (Button) findViewById(R.id.buttonreadmessagesend);
+        button_read_tag = (Button) findViewById(R.id.buttonreadtag);
         button_format = (Button) findViewById(R.id.buttonformat);
         message_send = (EditText) findViewById(R.id.messagesend);
         message_send_view = (TextView) findViewById(R.id.messagesendview);
-        textStatus = (TextView) findViewById(R.id.textstatus);
+        tag_message_read = (TextView) findViewById(R.id.tagmessageread);
         prepareNfcAdapter();
         button_format.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-        // Update status text
-                setStatus("READY TO FORMAT\nPASS A TAG");
-
-        //Allow to format when a tag is discovered */
                 isReadyToFormat = true;
+            }
+        });
+        button_read_tag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
             }
         });
     }
@@ -111,45 +115,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         mPendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
-    /**
-     * This async task is used to launch tag formatting and writing
-     */
-    /*private class LocalTask extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String params) {
-            Tag localTag = tag;
-
-        //Update status text
-            publishProgress(0);
-
-        // Erase, format and write data on NTAG21x
-            if (formatNtag(localTag)) {
-                Log.d(TAG, "Format TAG : SUCCESS");
-                publishProgress(1);
-            } else {
-                Log.d(TAG, "Format TAG : FAIL");
-                publishProgress(2);
-            }
-            return null;
-        }
-
-        // Update status text
-        protected void onProgressUpdate(Integer… values) {
-            switch (values[0]) {
-                case 0:
-                    setStatus("WRITING…");
-                    break;
-                case 1:
-                    setStatus("SUCCESS");
-                    break;
-                case 2:
-                    setStatus("FAIL");
-                    break;
-            }
-
-        }
-    } */
 
     /**
      * This method is used to format manually a NTAG to NDEF format
@@ -210,7 +175,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e(TAG, "Exception when formatting tag", e);
         }
-
+        Toast toast = Toast.makeText(getApplicationContext(),"Tag formated",Toast.LENGTH_SHORT);
+        toast.show();
         return result;
     }
     /**
@@ -229,10 +195,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return message;
     }
-
-    private void setStatus(String status) {
-        textStatus.setText(status);
-    }
-
-
 }

@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="2a92bec2e540c539258e851809121612b88a4d32">
+        sha1="9310d5058c1476079b6db5e750dfa9c6e9559b05">
         <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_72a91f69c209a93615a1eec584f14b570995a790.jar" />
     </item>
     <item
@@ -43,7 +43,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="6630e2a86d7bb8cfef460063a54f0a4b7d0eee9f">
+        sha1="2524a20e5d968e91ef6f39234844b6b1ea5f68ce">
         <dex dex="/home/agorn/AndroidStudioProjects/NFC_Test/app/build/intermediates/pre-dexed/debug/instant-run_e5364827d4660bc2fcb66fb88245688c3ffbc83c.jar" />
     </item>
     <item
