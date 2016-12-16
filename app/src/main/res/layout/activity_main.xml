@@ -25,54 +25,33 @@
         android:id="@+id/messagesend" />
 
     <Button
-        android:text="read message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/messagesend"
-        android:layout_alignLeft="@+id/messagesend"
-        android:layout_alignStart="@+id/messagesend"
-        android:layout_marginTop="20dp"
-        android:id="@+id/buttonreadmessagesend"
-        android:onClick="onClickReadMessageSend" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/messagesendview"
-        android:layout_alignBaseline="@+id/buttonreadmessagesend"
-        android:layout_alignBottom="@+id/buttonreadmessagesend"
-        android:layout_toRightOf="@+id/messagesend"
-        android:layout_toEndOf="@+id/messagesend" />
-
-    <Button
         android:text="format TAG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonreadmessagesend"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:id="@+id/buttonformat" />
+        android:layout_marginTop="53dp"
+        android:id="@+id/buttonformat"
+        android:layout_below="@+id/messagesend"
+        android:layout_alignRight="@+id/messagesend"
+        android:layout_alignEnd="@+id/messagesend"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp" />
+
+    <Button
+        android:text="Read Tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonreadtag"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/buttonformat"
+        android:layout_alignStart="@+id/buttonformat" />
 
     <TextView
         android:text="Tag message read"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tagmessageread"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/buttonreadmessagesend"
-        android:layout_alignStart="@+id/buttonreadmessagesend"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginBottom="71dp" />
-
-    <Button
-        android:text="Read Tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tagmessageread"
-        android:layout_toLeftOf="@+id/buttonformat"
-        android:layout_toStartOf="@+id/buttonformat"
-        android:layout_marginBottom="45dp"
-        android:id="@+id/buttonreadtag" />
+        android:layout_below="@+id/buttonreadtag"
+        android:layout_alignRight="@+id/buttonreadtag"
+        android:layout_alignEnd="@+id/buttonreadtag"
+        android:layout_marginTop="44dp" />
 </RelativeLayout>

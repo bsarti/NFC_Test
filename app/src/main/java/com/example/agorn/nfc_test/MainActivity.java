@@ -9,7 +9,6 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.MifareUltralight;
 import android.nfc.tech.Ndef;
-import android.os.AsyncTask;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,17 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
-import static android.R.attr.button;
-import static android.R.attr.privateImeOptions;
-
 public class MainActivity extends AppCompatActivity {
-    private Button button_read_send_message;
     private Button button_format;
     private EditText message_send;
-    private TextView message_send_view;
 
     /* NTAG NDEF Formating constants */
     private final static byte USER_DATA_PAGE_OFFSET = 4;
@@ -42,9 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private PendingIntent mPendingIntent;
     private NfcAdapter mNfcAdapter;
     private boolean isReadyToFormat = false;
+    private boolean isReadyToRead = false;
     private Tag tag;
-
-    private EditText inputText;
     private TextView tag_message_read;
     private final String TAG = "mytag";
     private Button button_read_tag;
@@ -53,30 +45,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button_read_send_message = (Button) findViewById(R.id.buttonreadmessagesend);
         button_read_tag = (Button) findViewById(R.id.buttonreadtag);
         button_format = (Button) findViewById(R.id.buttonformat);
         message_send = (EditText) findViewById(R.id.messagesend);
-        message_send_view = (TextView) findViewById(R.id.messagesendview);
         tag_message_read = (TextView) findViewById(R.id.tagmessageread);
         prepareNfcAdapter();
         button_format.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isReadyToFormat = true;
+                Toast toast = Toast.makeText(getApplicationContext(),"Pass your tag to format",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
         button_read_tag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isReadyToRead = true;
+                Toast toast = Toast.makeText(getApplicationContext(),"Pass your tag to read",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
-    }
-
-    public void onClickReadMessageSend(View view){
-        String message;
-        message = message_send.getText().toString();
-        message_send_view.setText(message);
     }
 
     @Override
@@ -98,18 +87,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         if (intent.getAction().equals(NfcAdapter.ACTION_TAG_DISCOVERED)) {
             Log.d(TAG, "TAG DISCOVERED received");
-            if (isReadyToFormat) {
+            if (isReadyToFormat & !isReadyToRead) {
                 isReadyToFormat = false;
                 tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-                /* Launch async task to process NTAG21x formatting and writing */
                 Tag localTag = tag;
                 formatNtag(localTag);
 
-            } else
-                Log.d(TAG, "Entered 0");
+            } else if (isReadyToRead & !isReadyToFormat) {
+                isReadyToRead = false;
                 tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
                 readmyTag(intent, tag);
-                Log.d(TAG, "Press the button before the tag discovering");
+            } else{
+                Toast toast = Toast.makeText(getApplicationContext(),"Decide if you want to format or read",Toast.LENGTH_SHORT);
+                toast.show();
+                isReadyToRead = false;
+                isReadyToFormat = false;
+            }
+
         }
     }
     /**
@@ -200,17 +194,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return message;
     }
-    private String readmyTag(Intent intent, Tag tag){
-        Log.d(TAG, "Entered 0.5");
+    private void readmyTag(Intent intent, Tag tag){
         Ndef ndef = Ndef.get(tag);
-        Log.d(TAG, "Entered1");
         try{
-            Log.d(TAG, "Entered2");
             ndef.connect();
             Parcelable[] messages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
 
             if (messages != null) {
-                Log.d(TAG, "Entered3");
                 NdefMessage[] ndefMessages = new NdefMessage[messages.length];
                 for (int i = 0; i < messages.length; i++) {
                     ndefMessages[i] = (NdefMessage) messages[i];
@@ -226,6 +216,5 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Cannot Read From Tag.", Toast.LENGTH_LONG).show();
         }
-        return "ok";
     }
 }
