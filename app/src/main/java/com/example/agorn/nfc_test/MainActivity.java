@@ -8,7 +8,9 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.MifareUltralight;
+import android.nfc.tech.Ndef;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 import static android.R.attr.button;
@@ -98,12 +101,14 @@ public class MainActivity extends AppCompatActivity {
             if (isReadyToFormat) {
                 isReadyToFormat = false;
                 tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-
-/* Launch async task to process NTAG21x formatting and writing */
+                /* Launch async task to process NTAG21x formatting and writing */
                 Tag localTag = tag;
                 formatNtag(localTag);
-                //new LocalTask().execute();
+
             } else
+                Log.d(TAG, "Entered 0");
+                tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+                readmyTag(intent, tag);
                 Log.d(TAG, "Press the button before the tag discovering");
         }
     }
@@ -194,5 +199,33 @@ public class MainActivity extends AppCompatActivity {
                             NdefRecord.createMime("text/plain", temp.getBytes())});
         }
         return message;
+    }
+    private String readmyTag(Intent intent, Tag tag){
+        Log.d(TAG, "Entered 0.5");
+        Ndef ndef = Ndef.get(tag);
+        Log.d(TAG, "Entered1");
+        try{
+            Log.d(TAG, "Entered2");
+            ndef.connect();
+            Parcelable[] messages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
+            if (messages != null) {
+                Log.d(TAG, "Entered3");
+                NdefMessage[] ndefMessages = new NdefMessage[messages.length];
+                for (int i = 0; i < messages.length; i++) {
+                    ndefMessages[i] = (NdefMessage) messages[i];
+                }
+                NdefRecord record = ndefMessages[0].getRecords()[0];
+
+                byte[] payload = record.getPayload();
+                String text = new String(payload);
+                tag_message_read.setText(text);
+                ndef.close();
+            }
+        }
+        catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Cannot Read From Tag.", Toast.LENGTH_LONG).show();
+        }
+        return "ok";
     }
 }
